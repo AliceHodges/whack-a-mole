@@ -1,0 +1,90 @@
+html {
+    background-color: #FFA600;
+    font-size: 13px; 
+    font-family: 'Bungee';
+}
+
+body {
+    width: 900px;
+    margin: 30px auto;
+    background-color: #FFFFFF;
+  }
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  
+}
+
+.flex-item {
+    width: 95%;
+    margin: 10px;
+    
+}
+
+#playarea {
+    height: 500px;
+    background-color: teal;
+}
+
+#timearea {
+    height: 200px;
+    background-color: orangered;
+}
+
+.mole-img {
+    display: flex;
+    height: 100px;
+    width: 120px;
+    padding-left: 25px;
+    left: 41%;
+    position: relative;
+}
+
+h1 {
+    font-size: 60px;
+    text-align: center;
+    margin: auto auto 0 auto;   
+    color: white;
+}
+
+h1#whacks {
+    font-size: 40px;
+}
+
+.button {
+    font-size: 40px;
+    margin: auto auto 0 auto;
+    color: white;
+    font-family: 'Bungee';
+    background-color: teal;
+    border: none;
+    justify-content: center;
+}
+
+#button-start.start-hide {
+    display: flex;
+}
+
+p {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: white;
+    font-family: 'Bungee';
+}
+
+p#time-message {
+    font-size: 20px;
+}
+
+p#time {
+    font-size: 50px;
+}
