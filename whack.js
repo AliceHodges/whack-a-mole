@@ -26,7 +26,7 @@ $( document ).ready(function() {
         console.log("you clicked start");
         //created a div to encase all the objects need to be hidden
         $(".start-hide").hide("slow");
-        $("#mole-img").show("slow");
+        $("#mole-img").show();
         timestamp = $.now();
         console.log(timestamp);
         whackamole();
