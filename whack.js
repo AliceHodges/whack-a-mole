@@ -114,6 +114,7 @@ $(document).ready(function () {
         $("#whack-title").show();
         $("#start").text("Play Again");
         $("#button-start").show();
+        $("#time-messages").show();
         $("#time").text(finalTime + " seconds");
         $("#time").text(score + " seconds");
         $("#time-message").text("Congrats " + inputName + " ! - your time was: ");
