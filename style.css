@@ -32,7 +32,7 @@ body {
 #playarea {
     height: 500px;
     background-color: teal;
-    cursor: url("../images/targetwhite.png"), auto;
+    cursor: url("targetwhite.png"), auto;
 }
 
 #timearea {
