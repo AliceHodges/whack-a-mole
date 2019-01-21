@@ -1,55 +1,71 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width">
-        <link href='https://fonts.googleapis.com/css?family=Bungee' rel='stylesheet'>
-        <title>Whackamole</title>
-        <link href="style.css" rel="stylesheet" type="text/css">
-        
-        <script
-        src="https://code.jquery.com/jquery-1.12.4.min.js"
-        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-        crossorigin="anonymous">
-        </script>
-        <script src="whack.js" async></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link href='https://fonts.googleapis.com/css?family=Bungee' rel='stylesheet'>
+    <title>Whackamole</title>
+    <link href="style/style.css" rel="stylesheet" type="text/css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous">
+    </script>
+    <script src="whackfix.js" async></script>
 
 
-    </head>
+</head>
 
-    <body>
-        <main>
-            <section class="main">
+<body>
+    <main>
+        <section class="main">
 
-                <div id="playarea" class="flex-item">
-                    <h1 class="start-hide"> WHACK-A-MOLE </h1>
-                    <div id="time-messages">
-                        <p id="time-message">Your time was:</p>
-                        <p id="time"></p>
+            <div id="playarea" class="flex-item">
+                <div id="whack-title">
+                    <h1> WHACK-A-MOLE </h1>
+                </div>
+                <div id="time-messages">
+                    <p id="time-message"></p>
+                    <p id="time"></p>
+                </div>
+                <img id="mole-img" class="mole-img" src="images/mole2.png" alt="MOLE">
+                <div id="button-start">
+                    <button class="button" id="start">START</button>
+                </div>
+                <div id="div-enter-name">
+                    <h2 id="h2-enter-name"> Enter Name:</h2>
+                    <input id="p-enter-name">
+                    <div id='div-go-button'>
+                        <button class="button" id="button-go">GO</button>
                     </div>
-                    <img id="mole-img" class="mole-img" src="mole2.png" alt="MOLE">
-                    <div class="start-hide" id="button-start">
-                        <button class="button" id="start">START</button> 
+                </div>
+            </div>
+
+
+            <div id="timearea" class="flex-item">
+                <div id="whack-display">
+                    <div id="div-nowhack">
+                        <h2 id="whacks"> Number of Whacks: </h2>
+                        <p id=noofwhacks></p>
                     </div>
-                    
-                </div>    
-                <div id="timearea" class="flex-item">
-                    <div id="whack-display">
-                    <h1 id="whacks"> Number of Whacks: </h1> 
-                    <p id=noofwhacks></p>
+                    <div id="div-timer">
+                        <h2 id="live-timer-message"> Time: </h2>
+                        <p id="timer"></p>
                     </div>
-                        
-                </div>            
+                </div>
+                
+                <div id="leader-board">
+                </div>
+            </div>
 
-            </section>
+        </section>
 
 
-        
-        
-        </main>
-        
 
-    </body>
+
+    </main>
+
+
+</body>
 
 </html>
