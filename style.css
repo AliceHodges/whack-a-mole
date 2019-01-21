@@ -8,6 +8,7 @@ body {
     width: 900px;
     margin: 30px auto;
     background-color: #FFFFFF;
+
   }
 
 
@@ -31,11 +32,11 @@ body {
 #playarea {
     height: 500px;
     background-color: teal;
-    cursor: url("targetwhite.png"), auto;
+    cursor: url("../images/targetwhite.png"), auto;
 }
 
 #timearea {
-    height: 200px;
+    height: 250px;
     background-color: orangered;
 }
 
@@ -48,6 +49,7 @@ body {
     position: relative;
 }
 
+
 h1 {
     font-size: 60px;
     text-align: center;
@@ -55,8 +57,10 @@ h1 {
     color: white;
 }
 
-h1#whacks {
-    font-size: 40px;
+h2 {
+    font-size: 30px;
+    color: white;
+    margin: 20px auto 0px auto;
 }
 
 .button {
@@ -67,10 +71,11 @@ h1#whacks {
     background-color: teal;
     border: none;
     justify-content: center;
-    cursor: url("targetwhite.png"), auto;
+    cursor: url("../images/targetwhite.png"), auto;
 }
 
-#button-start.start-hide {
+#div-go-button,
+#button-start {
     display: flex;
 }
 
@@ -78,15 +83,57 @@ p {
     font-size: 30px;
     margin: 0;
     padding: 0;
-    text-align: center;
     color: white;
     font-family: 'Bungee';
+    text-align: center;
 }
 
 p#time-message {
     font-size: 20px;
 }
 
+#h2-enter-name,
 p#time {
     font-size: 50px;
+}
+
+#whack-display{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around
+}
+
+p#noofwhacks {
+    text-align: center;
+}
+
+#nowhack {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#whacks, #live-timer-message {
+    margin: 10px 0px 0px 0px;
+}
+
+#time-messages,
+#h2-enter-name,
+#p-enter-name 
+{
+    text-align: center;
+}
+
+#div-enter-name {
+    display: none;
+    flex-direction: column;
+}
+
+#p-enter-name {
+    border: none;
+    background-color: teal;
+    color: white;
+    font-family: 'bungee';
+    font-size: 70px;
+    
 }
