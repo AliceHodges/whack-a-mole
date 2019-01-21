@@ -81,7 +81,7 @@ $(document).ready(function () {
 
     function whackamole() {
         console.log("new function");
-        if (noOfWhacks < 2) {
+        if (noOfWhacks < 6) {
             $("#noofwhacks").text(noOfWhacks);
             console.log(noOfWhacks);
             randomizePosition();
