@@ -96,7 +96,8 @@ $(document).ready(function () {
     }
 
     function gameover() {
-        var score = inputName + " : " + ((endTime - startTime) / 1000).toFixed(2);
+        var finalTime = ((endTime - startTime) / 1000).toFixed(2)
+        var score = inputName + " : " + finalTime;
         
         if (i < 3) {
             leaderBoard.push(score);
@@ -113,7 +114,7 @@ $(document).ready(function () {
         $("#whack-title").show();
         $("#start").text("Play Again");
         $("#button-start").show();
-        $("#time-messages").show();
+        $("#time").text(finalTime + " seconds");
         $("#time").text(score + " seconds");
         $("#time-message").text("Congrats " + inputName + " ! - your time was: ");
         $("#p-enter-name").val(" ");
