@@ -116,7 +116,6 @@ $(document).ready(function () {
         $("#button-start").show();
         $("#time-messages").show();
         $("#time").text(finalTime + " seconds");
-        $("#time").text(score + " seconds");
         $("#time-message").text("Congrats " + inputName + " ! - your time was: ");
         $("#p-enter-name").val(" ");
         i++
