@@ -29,13 +29,13 @@ body {
     
 }
 
-#playarea {
+#play-area {
     height: 500px;
     background-color: teal;
-    cursor: url("targetwhite.png"), auto;
+    cursor: url("../images/targetwhite.png"), auto;
 }
 
-#timearea {
+#time-area {
     height: 250px;
     background-color: orangered;
 }
@@ -71,7 +71,7 @@ h2 {
     background-color: teal;
     border: none;
     justify-content: center;
-    cursor: url("targetwhite.png"), auto;
+    cursor: url("../images/targetwhite.png"), auto;
 }
 
 #div-go-button,
@@ -98,7 +98,7 @@ p#time {
 }
 
 #whack-display{
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: space-around
 }
@@ -124,6 +124,12 @@ p#noofwhacks {
     text-align: center;
 }
 
+#time-messages, 
+#enter-name {
+    display: none;
+}
+
+
 #div-enter-name {
     display: none;
     flex-direction: column;
@@ -136,4 +142,9 @@ p#noofwhacks {
     font-family: 'bungee';
     font-size: 70px;
     
+}
+
+#p-enter-name:focus {
+    outline: none;
+    border-bottom: 5px white dashed;
 }
