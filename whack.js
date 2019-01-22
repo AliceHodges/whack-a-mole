@@ -1,63 +1,61 @@
-// A $( document ).ready() block.
+//whackamole js document
 $(document).ready(function () {
 
-
-
+    //definition of global variables
     var milseconds = null;
     var ticker = null;
     var noOfWhacks = 0;
     var i = 0;
     var startTime;
-    var endTime;
-    var inputName;
+    var $inputName;
     var elapsedTime;
     var leaderBoard = [];
-    $("#time-messages").hide();
-    $("#whack-display").hide();
-    $("#enter-name").hide();
 
+    //define common selectors
+    var $mole = $("#mole-img"),
+        $enterName = $("#div-enter-name"),
+        $pEnterName = $("#p-enter-name"),
+        $whackTitle = $("#whack-title"),
+        $playArea = $("#play-area"),
+        $whackDisplay = $("#whack-display"),
+        $leaderBoardList = $("#leader-board"),
+        $leaderBoardItem = $(".p-leader-board"),
+        $start = $("#start"),
+        $timeMessages = $("#time-messages"),
+        $buttonStart = $("#button-start");
 
+    //set the timer ticker to have interval 10ms
     ticker = setInterval(startTimer, 10);
 
+    //handling user clicks
+    $start.on("click", handleStartClick);
+    $("#go").on("click", handleGoClick);
+    $mole.on("click", whackamole);
 
-
-    $("#start").on({
-        "click": clickStart
-
-    });
-
-    $("#button-go").on("click", clickGo);
-
-    $("#mole-img").on({
-        "click": whackamole
-    });
-
-    function clickStart() {
-        $(".p-leader-board").hide();
-        $("#mole-img").hide();
-        $("#div-enter-name").css("display", "flex");
-        $("#whack-title").hide("slow");
-        $("#button-start").hide("slow");
-        $("#time-messages").hide();
+    function handleStartClick() {
+        $leaderBoardList.hide();
+        $timeMessages.hide();
+        $buttonStart.hide("slow");
+        $mole.hide();
+        $whackTitle.hide("slow");
+        $enterName.css("display", "flex");
+        $pEnterName.focus();
     }
 
-
-    function clickGo() {
+    function handleGoClick() {
         elapsedTime = 0;
         noOfWhacks = 0;
-        $("#div-enter-name").hide();
-        $(".start-hide").hide("slow");
-        $("#whack-display").show();
-        $("#mole-img").show();
-        startTime = $.now();
-        inputName = $("#p-enter-name").val();
-        console.log("The name is" + inputName);
+        startTime = Date.now();
+        $enterName.hide();
+        $mole.show();
+        $whackDisplay.css("display", "flex");
+        $inputName = $pEnterName.val();
         whackamole();
         startTimer();
     }
 
     function startTimer() {
-        var elapsedTime = $.now() - startTime;
+        var elapsedTime = Date.now() - startTime;
         $("#timer").text((elapsedTime / 1000).toFixed(2));
     }
 
@@ -66,63 +64,56 @@ $(document).ready(function () {
     }
 
     function randomizePosition() {
-        var divwidth = parseFloat($("#playarea").css("width"));
-        var divlength = parseFloat($("#playarea").css("height"));
-        var molewidth = parseFloat($("#mole-img").css("width"));
-        var moleheight = parseFloat($("#mole-img").css("height"));
-        var posx = getRandomInt(divwidth - molewidth - 25);
-        var posy = getRandomInt(divlength - moleheight);
-        $("#mole-img").css({
+        var divWidth = $playArea.width(),
+            divHeight = $playArea.height(),
+            moleWidth = $mole.width(),
+            moleHeight = $mole.height(),
+            posx = getRandomInt(divWidth - moleWidth - 25),
+            posy = getRandomInt(divHeight - moleHeight);
+        $mole.css({
             top: posy,
             left: posx,
-            position: "relative"
         });
+        console.log("divwidth" + divWidth + "Molewidth" + moleWidth);
     }
+
 
     function whackamole() {
-        console.log("new function");
         if (noOfWhacks < 6) {
-            $("#noofwhacks").text(noOfWhacks);
-            console.log(noOfWhacks);
+            $("#no-of-whacks").text(noOfWhacks);
             randomizePosition();
+            noOfWhacks++;
         } else {
-            $("#mole-img").hide("slow");
-            $("#whack-display").hide("slow");
-            endTime = $.now();
-            gameover();
+            $mole.hide("slow");
+            $whackDisplay.hide();
+            gameOver();
         }
-        noOfWhacks++;
-
     }
 
-    function gameover() {
-        var finalTime = ((endTime - startTime) / 1000).toFixed(2)
-        var score = inputName + " : " + finalTime;
-        
+    function gameOver() {
+        var endTime = Date.now(),
+            finalTime = ((endTime - startTime) / 1000).toFixed(2),
+            leaderBoardValue = $inputName + " : " + finalTime;
         if (i < 3) {
-            leaderBoard.push(score);
-            $("#leader-board").append("<p class=\"p-leader-board\" id=\"leaderboard-i" + i + "\">" + leaderBoard[i] + "</p>");
+            leaderBoard.push(leaderBoardValue);
+            $leaderBoardList.append("<p class=\"p-leader-board\" id=\"leaderboard-i" + i + "\">" + leaderBoard[i] + "</p>");
         } else {
-            leaderBoard.push(score);
-            var j = i-3
+            leaderBoard.push(leaderBoardValue);
+            var j = i - 3
             $("#leaderboard-i" + j).remove();
-            $("#leader-board").append("<p class=\"p-leader-board\" id=\"leaderboard-i" + i + "\">" + leaderBoard[3] + "</p>");            
+            $leaderBoardList.append("<p class=\"p-leader-board\" id=\"leaderboard-i" + i + "\">" + leaderBoard[3] + "</p>");
             leaderBoard.shift();
         }
-        console.log(leaderBoard);
-        $(".p-leader-board").show();
-        $("#whack-title").show();
-        $("#start").text("Play Again");
-        $("#button-start").show();
-        $("#time-messages").show();
-        $("#time").text(finalTime + " seconds");
-        $("#time-message").text("Congrats " + inputName + " ! - your time was: ");
-        $("#p-enter-name").val(" ");
         i++
+        $start.text("Play Again");
+        $("#time").text(finalTime + " seconds");
+        $("#time-message").text("Congrats " + $inputName + " ! - your time was: ");
+        $whackTitle.show();
+        $leaderBoardList.show();
+        $buttonStart.show();
+        $timeMessages.show();
+        $start.text("Play Again");
+        $pEnterName.val(" ");
     }
-
-
-
-
 
 });
