@@ -148,3 +148,9 @@ p#noofwhacks {
     outline: none;
     border-bottom: 5px white dashed;
 }
+
+#countdown { 
+    display: none;
+    padding-top: 150px;
+    font-size: 60px;
+}
