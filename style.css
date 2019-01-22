@@ -32,7 +32,7 @@ main {
 #play-area {
     height: 500px;
     background-color: teal;
-    cursor: url("../images/targetwhite.png"), auto;
+    cursor: url("targetwhite.png"), auto;
 }
 
 #time-area {
@@ -71,7 +71,7 @@ h2 {
     background-color: teal;
     border: none;
     justify-content: center;
-    cursor: url("../images/targetwhite.png"), auto;
+    cursor: url("targetwhite.png"), auto;
 }
 
 #div-go-button,
