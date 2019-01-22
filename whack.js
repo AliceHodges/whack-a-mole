@@ -4,6 +4,7 @@ $(document).ready(function () {
     //definition of global variables
     var milseconds = null;
     var ticker = null;
+    var countdownTicker = null;
     var noOfWhacks = 0;
     var i = 0;
     var startTime;
@@ -19,13 +20,15 @@ $(document).ready(function () {
         $playArea = $("#play-area"),
         $whackDisplay = $("#whack-display"),
         $leaderBoardList = $("#leader-board"),
-        $leaderBoardItem = $(".p-leader-board"),
         $start = $("#start"),
         $timeMessages = $("#time-messages"),
-        $buttonStart = $("#button-start");
+        $buttonStart = $("#button-start"),
+        $count = $("#countdown");
 
     //set the timer ticker to have interval 10ms
     ticker = setInterval(startTimer, 10);
+
+
 
     //handling user clicks
     $start.on("click", handleStartClick);
@@ -43,13 +46,28 @@ $(document).ready(function () {
     }
 
     function handleGoClick() {
+        var n=3;
+        countdownTicker = setInterval(function () {
+            if (n > 0) {
+                $count.text(n);
+                $count.fadeIn("slow");
+                $count.fadeOut("fast");
+                n--;
+            } else {
+                clearInterval(countdownTicker);
+                begin();
+            }
+        }, 1000);
+        $enterName.hide();
+        $inputName = $pEnterName.val();
+    }
+
+    function begin() {
         elapsedTime = 0;
         noOfWhacks = 0;
         startTime = Date.now();
-        $enterName.hide();
         $mole.show();
         $whackDisplay.css("display", "flex");
-        $inputName = $pEnterName.val();
         whackamole();
         startTimer();
     }
@@ -105,14 +123,12 @@ $(document).ready(function () {
             leaderBoard.shift();
         }
         i++
-        $start.text("Play Again");
         $("#time").text(finalTime + " seconds");
         $("#time-message").text("Congrats " + $inputName + " ! - your time was: ");
         $whackTitle.show();
         $leaderBoardList.show();
         $buttonStart.show();
         $timeMessages.show();
-        $start.text("Play Again");
         $pEnterName.val(" ");
     }
 
